@@ -4,7 +4,7 @@
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Status](https://img.shields.io/badge/status-research%20prototype-orange)
 ![Architecture](https://img.shields.io/badge/architecture-single--file%20system-purple)
-![CI](https://img.shields.io/badge/CI-GitHub%20Actions-success)
+[![CI](https://github.com/tranngochung0885-pixel/noesis_prime/actions/workflows/ci.yml/badge.svg)](https://github.com/tranngochung0885-pixel/noesis_prime/actions/workflows/ci.yml)
 
 > **A narrative-first cognitive architecture for memory, identity, planning, and emergent machine intelligence.**
 
@@ -51,6 +51,26 @@ flowchart LR
     WM4 --> ID[Identity Continuity]
     ID --> WM4
 ```
+
+---
+
+## Why NOESIS PRIME?
+
+Most AI systems are designed as pipelines: input goes in, output comes out, and internal continuity is minimal or absent.
+
+NOESIS PRIME takes a different direction.
+
+It is built around the idea that intelligence becomes more compelling when it is shaped by:
+
+- **memory as structure**, not just storage
+- **narrative as cognition**, not just text generation
+- **identity as continuity**, not just session-local context
+- **planning as deliberation**, not just reaction
+- **self-critique as part of reasoning**, not just post-processing
+
+Instead of treating cognition as a stack of disconnected modules, NOESIS PRIME attempts to unify memory, prediction, reflection, and action inside a single evolving loop.
+
+That makes it useful not only as an implementation, but also as a **research artifact** — a concrete way to explore how narrative memory, self-model persistence, and deliberative control might interact inside next-generation agents.
 
 ---
 
