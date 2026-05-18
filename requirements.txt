@@ -1,0 +1,17 @@
+numpy
+scipy
+
+# Optional model and embedding stack
+sentence-transformers
+torch
+faiss-cpu
+
+# Optional LLM backends
+anthropic
+openai
+llama-cpp-python
+
+# Optional API stack
+fastapi
+uvicorn
+pydantic
