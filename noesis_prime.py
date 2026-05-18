@@ -55,46 +55,32 @@ from __future__ import annotations
 # ═══════════════════════════════════════════════════════════════════════════════
 # §0  STDLIB IMPORTS
 # ═══════════════════════════════════════════════════════════════════════════════
-
-import asyncio
-import collections
-import contextlib
-import datetime
-import enum
-import functools
-import gc
 import hashlib
-import heapq
-import inspect
-import io
-import itertools
 import json
 import logging
 import math
 import os
-import pickle
-import queue
 import random
 import re
 import sqlite3
-import struct
 import sys
-import tempfile
 import threading
 import time
-import traceback
 import uuid
 import warnings
-from abc import ABC, abstractmethod
-from collections import Counter, OrderedDict, defaultdict, deque
-from copy import deepcopy
-from dataclasses import asdict, dataclass, field, fields
-from enum import Enum, auto
+from collections import OrderedDict, defaultdict, deque
+from dataclasses import dataclass, field, fields
+from enum import Enum
 from pathlib import Path
 from typing import (
-    TYPE_CHECKING, Any, Callable, ClassVar, Dict, Deque, FrozenSet,
-    Generator, Generic, Iterable, Iterator, List, Literal, Optional,
-    Protocol, Sequence, Set, Tuple, Type, TypeVar, Union, overload,
+    Any,
+    ClassVar,
+    Dict,
+    List,
+    Optional,
+    Set,
+    Tuple,
+    TypeVar,
 )
 
 warnings.filterwarnings("ignore", category=UserWarning)
@@ -2619,7 +2605,6 @@ class ActorCriticCore:
 
             # Actor: policy gradient + entropy bonus
             pi  = np.asarray(self.policy(self._last_state), np.float32)
-            ent = -np.sum(pi * np.log(pi + EPS))
             oh  = np.zeros(self.n_act, np.float32)
             oh[self._last_action_idx] = 1.0
             grad_log = oh - pi
@@ -3057,7 +3042,8 @@ class MetaCognitiveMonitor:
             recent = list(self._history)[-window:]
         if not recent:
             return {"steps": 0, "confidence_ema": self._conf_ema}
-        avg = lambda key: sum(getattr(m, key) for m in recent) / len(recent)
+        def avg(key):
+            return sum(getattr(m, key) for m in recent) / len(recent)
         return {
             "steps":            recent[-1].step if recent else 0,
             "avg_reward":       round(avg("reward"), 4),
@@ -3923,7 +3909,6 @@ class NOESISAgent:
         user   = self.ist.obs_text
 
         # Build conversation context (last N turns)
-        recent_ctx = self._conversation_history[-6:]
 
         # Chain-of-thought for ANALYTICAL or CRITICAL mode
         if self.ist.cognitive_mode == CognitiveMode.CRITICAL:
@@ -4311,7 +4296,8 @@ def build_api(mgr: SessionManager) -> Optional[Any]:
 
     from fastapi import FastAPI, HTTPException, WebSocket, WebSocketDisconnect
     from fastapi.middleware.cors import CORSMiddleware
-    from pydantic import BaseModel, Field as F
+    from pydantic import BaseModel
+    from pydantic import Field as F
 
     app = FastAPI(
         title="NOESIS PRIME API",
@@ -4428,7 +4414,7 @@ def build_api(mgr: SessionManager) -> Optional[Any]:
                 await ws.send_text(json.dumps(result))
         except WebSocketDisconnect:
             pass
-        except Exception as exc:
+        except Exception:
             await ws.close()
 
     return app
@@ -4503,7 +4489,7 @@ def run_demo(
     # ── Phase 2: Add goals ─────────────────────────────────────────────────────
     agent.add_goal("Provide accurate, well-grounded answers about cognitive science", priority=0.85)
     agent.add_goal("Demonstrate authentic memory recall and nostalgia", priority=0.70)
-    print(f"  Goals registered.")
+    print("  Goals registered.")
 
     # ── Phase 3: Interactive demo queries ──────────────────────────────────────
     print(f"\n▶ Running {min(n_queries, len(DEMO_QUERIES))} cognitive cycles...\n")
@@ -4535,27 +4521,27 @@ def run_demo(
     # ── Phase 6: Final introspection ──────────────────────────────────────────
     print("\n▶ Final introspection report:")
     intro = agent.introspect()
-    print(f"\n  Identity:")
+    print("\n  Identity:")
     id_data = intro["identity"]
     for k, v in id_data.items():
         if not isinstance(v, dict):
             print(f"    {k:25s}: {v}")
-    print(f"\n  Cognition:")
+    print("\n  Cognition:")
     cog = intro["cognition"]
     for k, v in cog.items():
         print(f"    {k:25s}: {v}")
-    print(f"\n  Neuromodulators:")
+    print("\n  Neuromodulators:")
     ntx = intro["neuromod"]
     lvls = ntx.get("levels", {})
     for k, v in lvls.items():
         print(f"    {k:6s}: {v:.4f}")
     print(f"    mode  : {ntx.get('mode', '?')}")
-    print(f"\n  Memory:")
+    print("\n  Memory:")
     mem = intro["memory"]
     for k, v in mem.items():
         if isinstance(v, (int, float)):
             print(f"    {k:25s}: {v}")
-    print(f"\n  Performance:")
+    print("\n  Performance:")
     perf = intro["performance"]
     for k, v in perf.items():
         if not isinstance(v, list):
@@ -4704,7 +4690,7 @@ def run_cli(session_id: str = "default", cfg: Optional[NOESISConfig] = None):
                   f"conf={conf:.3f} | surp={surp:.3f}]")
             print(result.get("output", ""))
             if result.get("retrieved"):
-                print(f"\n  Memory context:")
+                print("\n  Memory context:")
                 for r in result["retrieved"][:2]:
                     print(f"    • {r[:80]}")
             print()
