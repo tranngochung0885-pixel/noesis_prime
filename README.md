@@ -74,6 +74,67 @@ That makes it useful not only as an implementation, but also as a **research art
 
 ---
 
+## Design Principles
+
+The architecture is guided by a small set of core design principles:
+
+- **Continuity over statelessness**  
+  Intelligence is modeled as an ongoing process rather than isolated request-response events.
+
+- **Memory as an active substrate**  
+  Memory is not just a log of the past; it shapes present interpretation and future behavior.
+
+- **Narrative as a cognitive organizer**  
+  Higher-level cognition emerges not only from features and tokens, but from structured narrative integration.
+
+- **Prediction before reaction**  
+  The system prioritizes anticipatory world modeling over purely reactive generation.
+
+- **Deliberation under uncertainty**  
+  Planning, self-critique, and confidence monitoring are treated as first-class mechanisms.
+
+- **Identity as persistent structure**  
+  A coherent agent requires cross-session continuity, not just transient context windows.
+
+- **Research transparency over black-box polish**  
+  The repository emphasizes inspectability, conceptual clarity, and explicit mechanisms.
+
+---
+
+## Research Vision
+
+NOESIS PRIME explores a broader question than "how do we generate better answers?"
+
+Its deeper question is: **how might an artificial system maintain continuity of memory, self-model, prediction, and reflection over time in a way that more closely resembles cognitive organization rather than isolated inference?**
+
+The long-term research vision includes:
+
+- agents with richer autobiographical memory
+- systems that maintain identity continuity across long horizons
+- planning architectures that integrate memory and self-models
+- narrative-based cognition as a complement to token-level reasoning
+- hybrid systems that combine symbolic structure, learned representations, and LLM generation
+
+In that sense, NOESIS PRIME is both a working prototype and a research scaffold for future cognitive architectures.
+
+---
+
+## Future Directions
+
+Promising future directions for the project include:
+
+- modularizing the single-file implementation into composable packages
+- expanding automated tests and evaluation harnesses
+- adding reproducible benchmarks for memory retrieval and planning quality
+- improving API schemas, validation, and deployment ergonomics
+- adding richer persistence, export/import, and memory replay tooling
+- integrating more structured world-model learning and simulation
+- exploring multi-agent or embodied extensions
+- developing stronger introspection and interpretability dashboards
+- studying narrative identity formation over long-running sessions
+
+---
+
 ## Table of Contents
 
 - [Overview](#overview)
