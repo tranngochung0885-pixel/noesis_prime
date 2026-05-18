@@ -4,6 +4,7 @@
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Status](https://img.shields.io/badge/status-research%20prototype-orange)
 ![Architecture](https://img.shields.io/badge/architecture-single--file%20system-purple)
+![CI](https://img.shields.io/badge/CI-GitHub%20Actions-success)
 
 **A unified neuro-inspired cognitive architecture where memory is a living graph, thought is a narrative, and the self is a continuous process.**
 
@@ -28,10 +29,11 @@ The core insight: **human cognition is not merely data processing — it is a re
   - [Interactive CLI](#interactive-cli)
   - [REST API Server](#rest-api-server)
 - [API Overview](#-api-overview)
+- [Project Structure](#-project-structure)
 - [Architecture Overview](#-architecture-overview)
 - [Configuration](#️-configuration)
-- [Code Structure](#-code-structure)
 - [Telemetry & Introspection](#-telemetry--introspection)
+- [Development](#-development)
 - [Extending NOESIS](#-extending-noesis)
 - [Limitations](#-limitations)
 - [Roadmap Ideas](#-roadmap-ideas)
@@ -54,6 +56,7 @@ At a high level, the architecture combines:
 - **Identity continuity** for persistent self-modeling
 - **Adaptive LLM routing** across local and cloud backends
 - **CLI + REST API** interfaces for experimentation
+- **SQLite-backed persistence** for long-term state and memory
 
 This repository is best understood as a **research prototype**, **architectural exploration**, and **technical demonstration** of a narrative-first model of machine cognition.
 
@@ -65,7 +68,8 @@ This repository is best understood as a **research prototype**, **architectural 
 **Version:** 1.0  
 **Implementation style:** Single-file reference implementation  
 **Primary language:** Python  
-**Interface modes:** Demo, CLI, REST API
+**Interface modes:** Demo, CLI, REST API  
+**Project maturity:** Early open-source / research-grade foundation
 
 This project is suitable for:
 - experimentation
@@ -74,7 +78,7 @@ This project is suitable for:
 - memory/planning/self-model research
 - inspiration for modular multi-agent or embodied-agent systems
 
-It is **not yet positioned as a production framework**. The current implementation prioritizes conceptual completeness and integrative design over packaging, benchmarking, and modular decomposition.
+It is **not yet positioned as a production framework**. The current implementation prioritizes conceptual completeness and integrative design over full modular decomposition and production hardening.
 
 ---
 
@@ -163,6 +167,7 @@ Install these for full functionality:
 - `llama-cpp-python`
 - `fastapi`
 - `uvicorn`
+- `pydantic`
 
 ### Runtime notes
 
@@ -183,10 +188,10 @@ git clone https://github.com/tranngochung0885-pixel/noesis_prime.git
 cd noesis_prime
 
 # Install core dependencies
-pip install numpy scipy
+pip install -r requirements.txt
 
-# Optional: install full capabilities
-pip install sentence-transformers faiss-cpu torch anthropic openai llama-cpp-python fastapi uvicorn
+# Optional editable install for development
+pip install -e .[dev]
 ```
 
 ### Environment Variables
@@ -305,6 +310,39 @@ Available endpoints include:
 }
 ```
 
+For more details, see:
+- `docs/api.md`
+- `docs/architecture.md`
+
+---
+
+## 📁 Project Structure
+
+```text
+.
+├── .github/
+│   ├── ISSUE_TEMPLATE/
+│   ├── workflows/
+│   └── pull_request_template.md
+├── docs/
+│   ├── api.md
+│   └── architecture.md
+├── tests/
+│   ├── test_config.py
+│   ├── test_import.py
+│   └── test_vec.py
+├── .gitignore
+├── CHANGELOG.md
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+├── LICENSE
+├── README.md
+├── SECURITY.md
+├── noesis_prime.py
+├── pyproject.toml
+└── requirements.txt
+```
+
 ---
 
 ## 🧠 Architecture Overview
@@ -326,6 +364,8 @@ NOESIS PRIME runs one cognitive cycle per `step()` call:
 13. **Telemetry + Consolidation** – Record metrics and run periodic consolidation.
 
 All modules read from and propose updates to the **Internal State Tensor (IST)** — the shared source of truth for the current cognitive state.
+
+For a higher-level architectural summary, see `docs/architecture.md`.
 
 ---
 
@@ -360,36 +400,6 @@ Key configuration groups include:
 
 ---
 
-## 📁 Code Structure
-
-Current implementation:
-
-```text
-.
-├── README.md
-└── noesis_prime.py
-```
-
-Major components inside `noesis_prime.py`:
-
-- `NOESISConfig` – master configuration
-- `Vec` – numeric/vector utility layer
-- `VectorIndex` – ANN or brute-force retrieval backend
-- `CognitiveEncoder` – input encoding and level projection
-- `TemporalNarrativeGraph` – episodic graph memory
-- `ResonanceMemoryEngine` – semantic memory, working memory, nostalgia, reconsolidation
-- `NeuromodulatoryFabric` – DA/NE/ACh/5HT/GABA/GLU dynamics
-- `HierarchicalWorldModel` – 4-level predictive coding stack
-- `DeliberativeCortex` – MCTS + actor-critic planning
-- `IdentityContinuityLayer` – persistent self-model
-- `MetaCognitiveMonitor` – uncertainty and calibration monitoring
-- `AdaptiveLLMBridge` – backend routing across local/cloud LLMs
-- `NOESISAgent` – unified cognitive core
-- `SessionManager` – multi-session orchestration
-- `build_api()` / `run_demo()` / `run_cli()` – application entry points
-
----
-
 ## 📊 Telemetry & Introspection
 
 Built-in observability features include:
@@ -409,6 +419,35 @@ The introspection output includes:
 - memory statistics
 - LLM routing statistics
 - current plan and cumulative reward
+
+---
+
+## 🛠 Development
+
+### Install development dependencies
+
+```bash
+pip install -e .[dev]
+```
+
+### Run tests
+
+```bash
+pytest -q
+```
+
+### Run lint
+
+```bash
+ruff check .
+```
+
+### Continuous Integration
+
+The repository includes a GitHub Actions workflow for:
+- multi-version Python checks
+- linting with Ruff
+- running tests with Pytest
 
 ---
 
@@ -432,8 +471,8 @@ Ways to extend the current system:
 Current limitations of the repository:
 
 - **Single-file implementation** – powerful as a reference, but harder to maintain at scale.
-- **No packaging metadata** – there is currently no `requirements.txt`, `pyproject.toml`, or installable package structure.
-- **Limited automated testing** – no dedicated test suite is included yet.
+- **Early packaging stage** – `requirements.txt` and `pyproject.toml` are now included, but packaging can still be improved further.
+- **Basic test coverage only** – test scaffolding exists, but coverage is still minimal and should be expanded.
 - **Research-first behavior** – several mechanisms are conceptually rich but not benchmarked against standardized tasks.
 - **Optional dependency variability** – behavior changes depending on which optional packages are installed.
 - **Production hardening not included** – authentication, rate limiting, deployment guides, and persistence migrations are not yet formalized.
@@ -445,13 +484,13 @@ Current limitations of the repository:
 Natural next steps for making the repository even stronger:
 
 - split `noesis_prime.py` into modular packages
-- add `requirements.txt` or `pyproject.toml`
-- add automated tests for memory, planning, and API endpoints
+- expand automated tests for memory, planning, and API endpoints
 - provide Docker support
 - include architecture diagrams and benchmark results
 - add reproducible experiments and evaluation scripts
 - expose richer API schemas and OpenAPI examples
 - add persistent session export/import utilities
+- publish formal releases and tagged milestones
 
 ---
 
@@ -475,7 +514,7 @@ Natural next steps for making the repository even stronger:
 **GitHub:** `tranngochung0885-pixel`  
 **Repository:** `tranngochung0885-pixel/noesis_prime`
 
-If you want this section to look even more professional, you can later replace the GitHub username with:
+If you want this section to look even more professional later, you can replace the GitHub username with:
 - your real name
 - a short bio
 - contact email
