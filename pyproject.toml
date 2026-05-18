@@ -84,3 +84,6 @@ target-version = "py310"
 [tool.ruff.lint]
 select = ["E", "F", "I"]
 ignore = []
+
+[tool.ruff.lint.per-file-ignores]
+"noesis_prime.py" = ["E501", "E701", "E702", "E722", "E731", "E741"]
