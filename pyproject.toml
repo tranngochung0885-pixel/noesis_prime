@@ -1,0 +1,86 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "noesis-prime"
+version = "1.0.0"
+description = "NOESIS PRIME: Narrative-Oriented Emergent Intelligence System"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+  { name = "tranngochung0885-pixel" }
+]
+keywords = [
+  "ai",
+  "agent",
+  "cognitive-architecture",
+  "memory",
+  "predictive-coding",
+  "mcts",
+  "llm",
+  "research"
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+  "numpy",
+  "scipy",
+]
+
+[project.optional-dependencies]
+full = [
+  "sentence-transformers",
+  "torch",
+  "faiss-cpu",
+  "anthropic",
+  "openai",
+  "llama-cpp-python",
+  "fastapi",
+  "uvicorn",
+  "pydantic",
+]
+dev = [
+  "pytest",
+  "pytest-cov",
+  "httpx",
+  "ruff",
+]
+api = [
+  "fastapi",
+  "uvicorn",
+  "pydantic",
+]
+llm = [
+  "anthropic",
+  "openai",
+  "llama-cpp-python",
+]
+
+[project.urls]
+Homepage = "https://github.com/tranngochung0885-pixel/noesis_prime"
+Repository = "https://github.com/tranngochung0885-pixel/noesis_prime"
+Issues = "https://github.com/tranngochung0885-pixel/noesis_prime/issues"
+
+[tool.setuptools]
+py-modules = ["noesis_prime"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+ignore = []
