@@ -6,11 +6,51 @@
 ![Architecture](https://img.shields.io/badge/architecture-single--file%20system-purple)
 ![CI](https://img.shields.io/badge/CI-GitHub%20Actions-success)
 
-**A unified neuro-inspired cognitive architecture where memory is a living graph, thought is a narrative, and the self is a continuous process.**
+> **A narrative-first cognitive architecture for memory, identity, planning, and emergent machine intelligence.**
 
-NOESIS PRIME is a research-oriented cognitive architecture that integrates episodic memory, predictive coding, neuromodulation, planning, identity continuity, and adaptive LLM routing into a single agentic system. It evolves through a continuous cognitive cycle rather than a sequence of isolated modules.
+NOESIS PRIME is a research-oriented AI architecture that treats cognition not as a linear pipeline, but as a **continuous recursive process** shaped by memory, predictive world modeling, neuromodulation, deliberation, and self-reflection.
 
-The core insight: **human cognition is not merely data processing — it is a recursive narrative engine.** Every perception is interpreted through past experience, future expectation, and an evolving self-model.
+Instead of storing experience as isolated records, NOESIS PRIME models mind-like behavior through a **Temporal Narrative Graph**, a **4-level hierarchical world model**, an **identity continuity layer**, and an **adaptive reasoning bridge** spanning local and cloud LLMs.
+
+**In short:** memory is a living graph, thought is an evolving narrative, and the self is a persistent process.
+
+---
+
+## 🧠 Architecture Diagram
+
+```mermaid
+flowchart LR
+    U[Input] --> ENC[Encoder]
+    ENC --> WM[World Model]
+    ENC --> MEM[Memory Engine]
+
+    WM --> WM1[Perception]
+    WM --> WM2[Concept]
+    WM --> WM3[Narrative]
+    WM --> WM4[Self-Model]
+
+    MEM --> TNG[Temporal Narrative Graph]
+    MEM --> SEM[Semantic Memory]
+    MEM --> WORK[Working Memory]
+    MEM --> NOST[Nostalgia / Reconsolidation]
+
+    WM --> NTX[Neuromodulation]
+    WM --> PLAN[Planning Core]
+    MEM --> PLAN
+    NTX --> PLAN
+
+    PLAN --> ACT[Action Selection]
+    ACT --> LLM[Adaptive LLM Bridge]
+    LLM --> OUT[Response]
+
+    OUT --> CRIT[Self-Critique]
+    CRIT --> WRITE[Memory Write]
+    WRITE --> MEM
+
+    OUT --> MON[Meta-Cognitive Monitor]
+    WM4 --> ID[Identity Continuity]
+    ID --> WM4
+```
 
 ---
 
