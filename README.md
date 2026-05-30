@@ -8,9 +8,9 @@
 
 > **A narrative-first cognitive architecture for memory, identity, planning, and emergent machine intelligence.**
 
-NOESIS PRIME is a research-oriented AI architecture that treats cognition not as a linear pipeline, but as a **continuous recursive process** shaped by memory, predictive world modeling, neuromodulation, deliberation, and self-reflection.
+NOESIS PRIME is a research-oriented AI architecture that treats cognition not as a linear pipeline, but as a **continuous recursive process** shaped by memory, predictive world modeling, neuromodu[...]
 
-Instead of storing experience as isolated records, NOESIS PRIME models mind-like behavior through a **Temporal Narrative Graph**, a **4-level hierarchical world model**, an **identity continuity layer**, and an **adaptive reasoning bridge** spanning local and cloud LLMs.
+Instead of storing experience as isolated records, NOESIS PRIME models mind-like behavior through a **Temporal Narrative Graph**, a **4-level hierarchical world model**, an **identity continuity l[...]
 
 **In short:** memory is a living graph, thought is an evolving narrative, and the self is a persistent process.
 
@@ -70,7 +70,7 @@ It is built around the idea that intelligence becomes more compelling when it is
 
 Instead of treating cognition as a stack of disconnected modules, NOESIS PRIME attempts to unify memory, prediction, reflection, and action inside a single evolving loop.
 
-That makes it useful not only as an implementation, but also as a **research artifact** — a concrete way to explore how narrative memory, self-model persistence, and deliberative control might interact inside next-generation agents.
+That makes it useful not only as an implementation, but also as a **research artifact** — a concrete way to explore how narrative memory, self-model persistence, and deliberative control might i[...]
 
 ---
 
@@ -105,7 +105,7 @@ The architecture is guided by a small set of core design principles:
 
 NOESIS PRIME explores a broader question than "how do we generate better answers?"
 
-Its deeper question is: **how might an artificial system maintain continuity of memory, self-model, prediction, and reflection over time in a way that more closely resembles cognitive organization rather than isolated inference?**
+Its deeper question is: **how might an artificial system maintain continuity of memory, self-model, prediction, and reflection over time in a way that more closely resembles cognitive organizatio[...]
 
 The long-term research vision includes:
 
@@ -146,7 +146,7 @@ Promising future directions for the project include:
 - [Quick Start](#-quick-start)
   - [Installation](#installation)
   - [Environment Variables](#environment-variables)
-  - [Run Demonstration](#run-demonstration)
+  - [Run Demonstronstration](#run-demonstration)
   - [Interactive CLI](#interactive-cli)
   - [REST API Server](#rest-api-server)
 - [API Overview](#-api-overview)
@@ -166,7 +166,7 @@ Promising future directions for the project include:
 
 ## Overview
 
-NOESIS PRIME is the culmination of multiple generations of cognitive architecture ideas (AXIOM → NEXUS → HELIOS → MNEMOS → NOESIS). The repository currently implements the full system in a single Python file, with a unified internal state and tightly integrated subsystems.
+NOESIS PRIME is the culmination of multiple generations of cognitive architecture ideas (AXIOM → NEXUS → HELIOS → MNEMOS → NOESIS). The repository currently implements the full system in [...]
 
 At a high level, the architecture combines:
 
@@ -199,7 +199,7 @@ This project is suitable for:
 - memory/planning/self-model research
 - inspiration for modular multi-agent or embodied-agent systems
 
-It is **not yet positioned as a production framework**. The current implementation prioritizes conceptual completeness and integrative design over full modular decomposition and production hardening.
+It is **not yet positioned as a production framework**. The current implementation prioritizes conceptual completeness and integrative design over full modular decomposition and production harden[...]
 
 ---
 
@@ -634,12 +634,6 @@ Natural next steps for making the repository even stronger:
 
 **GitHub:** `tranngochung0885-pixel`  
 **Repository:** `tranngochung0885-pixel/noesis_prime`
-
-If you want this section to look even more professional later, you can replace the GitHub username with:
-- your real name
-- a short bio
-- contact email
-- project website or paper link
 
 ---
 
